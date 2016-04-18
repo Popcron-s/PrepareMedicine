@@ -249,19 +249,19 @@ bool _GIMain::Save(){
 }
 
 bool _GIMain::Load(){
+	FILE* file;
+	fopen_s(&file, "SaveFile.sav", "rb");
+	if(file == NULL){return false;}
 	if(m_Item[0] != 0){RemoveObjectForCamera(sub_cam,Item[0]);}
 	if(m_Item[1] != 0){RemoveObjectForCamera(sub_cam,Item[1]);}
 	if(m_Item[2] != 0){RemoveObjectForCamera(sub_cam,Item[2]);}
 	RemoveObjectForCamera(sub_cam,main_menu);
-	FILE* file;
-	fopen_s(&file, "SaveFile.sav", "rb");
-	if(file == NULL){return false;}
 	fread(&m_Gold, sizeof(INT), 1, file);
 	fread(m_Item, sizeof(unsigned char), 3, file);
 	fclose(file);
 	if(m_Item[0] != 0){RegisterObjectForCamera(sub_cam,Item[0]);}
-	if(m_Item[1] != 0){RegisterObjectForCamera(sub_cam,Item[0]);}
-	if(m_Item[2] != 0){RegisterObjectForCamera(sub_cam,Item[0]);}
+	if(m_Item[1] != 0){RegisterObjectForCamera(sub_cam,Item[1]);}
+	if(m_Item[2] != 0){RegisterObjectForCamera(sub_cam,Item[2]);}
 	RegisterObjectForCamera(sub_cam,main_menu);
 	return true;
 }

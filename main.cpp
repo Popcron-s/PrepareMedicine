@@ -50,7 +50,7 @@ void Loop() {
 int WINAPI WinMain(HINSTANCE hThisInst, HINSTANCE hPrevInst, LPSTR lpszArgs, int nWinMode) {
 	srand(time(NULL));
 	SetBackBuffer(800, 600);
-	WindowCreate(hThisInst, L"Prepare Medicine", &nWinMode, 800, 600);
+	WindowCreate(hThisInst, L"Prepare Medicine", &nWinMode, 810, 610);
 
 	HWND hwnd = GetHWND();
 	_GAME::GetSingleton()->Init();
